@@ -1,0 +1,8 @@
+# file: nginx/tasks/sites.yml
+
+- name: Nginx | Update the configurations for the upstreams inventory
+  template:
+    src: upstream.j2
+    dest: "{{nginx_dir}}/conf.d/{{item.upstream.name}}.conf"
+  with_items: nginx_upstreams
+  when: nginx_upstreams|lower != 'none'

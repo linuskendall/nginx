@@ -8,5 +8,6 @@
 - include: configure.yml
 - include: default_site.yml
 - include: sites.yml
+- include: upstreams.yml
 - include: monit.yml
   when: monit_protection is defined and monit_protection == true
