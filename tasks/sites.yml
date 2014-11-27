@@ -6,3 +6,8 @@
     dest: "{{nginx_dir}}/sites-available/{{item.server.name}}"
   with_items: nginx_sites
   when: nginx_sites|lower != 'none'
+
+- name: Nginx | Enable sites
+  command: nxensite "{{item.server.name}}"
+  when: item.enabled
+  with_items: nginx_sites
